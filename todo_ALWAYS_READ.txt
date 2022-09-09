@@ -1,1 +1,7 @@
 1. make sure all form labels have appropriate "name=" attributes on them
+
+2. Add new post button
+
+3. Design and create database
+
+4. PHP shiz to dynamically create content as you scroll

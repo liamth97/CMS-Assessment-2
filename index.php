@@ -6,9 +6,31 @@ require "header.php"
 <!-- REQUIRE HEADER END -->
 
 <!-- MAIN CONTENT START -->
+<div class="container ">
+
+    <!-- CARD START -->
+    <div class="row mt-5 mt-md-0 pt-5 pt-md-0">
+        <div class="card mt-5 p-0 border-0 bg-light col-12 col-md-9 col-lg-7 col-xl-5 m-auto">
+            <div class="icon-shift position-absolute">
+                <img class="icon-size" src="img/oppo.jpg" alt="">
+            </div>
+            <div class="card-header bg-light">
+                <p class="h4">Profile Name</p>
+            </div>
+            <img src="img/venti.jpg" class="card-img-top rounded-0" alt="...">
+            <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+    <!-- CARD END -->
+
+</div>
 
 <!-- MAIN CONTENT END -->
 
-</body>
-
-</html>
+<!-- REQUIRE FOOTER START -->
+<?php
+require "footer.php"
+?>
+<!-- REQUIRE FOOTER END -->

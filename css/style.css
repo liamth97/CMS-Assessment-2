@@ -1,0 +1,21 @@
+/* body {
+	position: relative;
+	top: 50px;
+} */
+
+.icon-size {
+	width: 85px;
+	height: 85px;
+	object-fit: cover;
+}
+
+.icon-shift {
+	left: -110px;
+}
+
+@media screen and (max-width: 768px) {
+	.icon-shift {
+		top: -100px;
+		left: 0px;
+	}
+}

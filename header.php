@@ -14,17 +14,20 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
     <!-- Bootstrap JavaScript -->
     <!-- JavaScript Bundle with Popper -->
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
-    <title>Document</title>
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <title>jumblr | Feel the content</title>
 </head>
 
 <body class="bg-dark">
 
     <!-- NAVBAR START -->
-    <nav class="navbar navbar-expand-lg bg-dark">
+    <nav class="navbar navbar-expand-lg bg-dark sticky-top">
         <div class="container-fluid">
 
             <!-- NAVBAR ICON START -->
@@ -34,18 +37,18 @@ session_start();
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse ms-5 ps-5" id="navbarNav">
-                <ul class="navbar-nav ">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
 
                     <!-- LOGIN START -->
                     <li class="nav-item">
-                        <button class="text-light btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                        <button class="text-light btn btn-secondary ms-3 mt-3" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
                     </li>
                     <!-- LOGIN START -->
 
                     <!-- SIGNUP START -->
-                    <li class="nav-item ms-4">
-                        <button class="text-light btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal">Signup</button>
+                    <li class="nav-item">
+                        <button class="text-light btn btn-primary ms-3 mt-3" data-bs-toggle="modal" data-bs-target="#signupModal">Signup</button>
                     </li>
                     <!-- SIGNUP START -->
                 </ul>
