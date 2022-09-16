@@ -41,14 +41,14 @@ session_start();
                 <ul class="navbar-nav">
 
                     <!-- LOGIN START -->
-                    <li class="nav-item">
-                        <button class="text-light btn btn-secondary ms-3 mt-3" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                    <li class="nav-item mt-2 m-lg-0 ms-lg-5 me-lg-2">
+                        <button class="text-light btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
                     </li>
                     <!-- LOGIN START -->
 
                     <!-- SIGNUP START -->
-                    <li class="nav-item">
-                        <button class="text-light btn btn-primary ms-3 mt-3" data-bs-toggle="modal" data-bs-target="#signupModal">Signup</button>
+                    <li class="nav-item mt-3 m-lg-0">
+                        <button class="text-light btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal">Signup</button>
                     </li>
                     <!-- SIGNUP START -->
                 </ul>
@@ -56,96 +56,3 @@ session_start();
         </div>
     </nav>
     <!-- NAVBAR END -->
-
-    <!-- LOGIN MODAL START -->
-    <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content bg-dark">
-                <div class="modal-header">
-                    <h5 class="modal-title text-light" id="loginModalLabel">Login</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-light">
-
-                    <!-- FORM START -->
-                    <form action="includes/login.inc.php" method="POST">
-
-                        <!-- USERNAME START -->
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" aria-describedby="username">
-                        </div>
-                        <!-- USERNAME END -->
-
-                        <!-- PASSWORD START -->
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password">
-                        </div>
-                        <!-- PASSWORD END -->
-
-                        <!-- FORM SUBMIT/CLOSE -->
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal">Close</button>
-                    </form>
-                    <!-- FORM END -->
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- LOGIN MODAL START -->
-
-    <!-- SIGNUP MODAL START -->
-    <div class="modal fade" id="signupModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content bg-dark">
-                <div class="modal-header">
-                    <h5 class="modal-title text-light" id="signupModalLabel">Signup</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-light">
-
-                    <!-- FORM START -->
-                    <form>
-
-                        <!-- USERNAME START -->
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" aria-describedby="username">
-                        </div>
-                        <!-- USERNAME END -->
-
-                        <!-- EMAIL START -->
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email">
-                        </div>
-                        <!-- EMAIL END -->
-
-                        <!-- PASSWORD START -->
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password">
-                        </div>
-                        <!-- PASSWORD END -->
-
-                        <!-- PASSWORD REPEAT START -->
-                        <div class="mb-3">
-                            <label for="passwordRepeat" class="form-label">Repeat Password</label>
-                            <input type="password" class="form-control" id="passwordRepeat">
-                        </div>
-                        <!-- PASSWORD REPEAT END -->
-
-                        <!-- FORM SUBMIT/CLOSE -->
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal">Close</button>
-                    </form>
-                    <!-- FORM END -->
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- SIGNUP MODAL END -->
