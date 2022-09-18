@@ -39,7 +39,7 @@
                     <!-- PASSWORD REPEAT END -->
 
                     <!-- FORM SUBMIT/CLOSE -->
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" name="signup-submit">Submit</button>
                     <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal">Close</button>
                 </form>
                 <!-- FORM END -->

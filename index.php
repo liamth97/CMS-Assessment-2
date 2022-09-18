@@ -7,6 +7,9 @@ require "header.php"
 
 <!-- MAIN CONTENT START -->
 <div class="container ">
+    <?php
+    require "./includes/connect.inc.php";
+    ?>
 
     <!-- CARD START -->
     <div class="row mt-5 mt-md-0 pt-5 pt-md-0">
