@@ -12,7 +12,7 @@
 
                     <!-- USERNAME START -->
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
+                        <label for="username" class="form-label">Username/Email</label>
                         <input type="text" class="form-control" id="username" name="uid" aria-describedby="username">
                     </div>
                     <!-- USERNAME END -->
@@ -25,7 +25,7 @@
                     <!-- PASSWORD END -->
 
                     <!-- FORM SUBMIT/CLOSE -->
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" name="login-submit">Submit</button>
                     <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal">Close</button>
                 </form>
                 <!-- FORM END -->
