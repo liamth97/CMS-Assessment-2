@@ -46,7 +46,7 @@ if (isset($_POST['login-submit'])) {
 
                 // PWD CHECK
                 if ($pwdCheck == false) {
-                    header("Location: ../index.php?loginerror=wrongpwd");
+                    header("Location: ../index.php?loginerror=incorrectfields");
                     exit();
                 } else if ($pwdCheck == true) {
                     session_start();
@@ -56,11 +56,11 @@ if (isset($_POST['login-submit'])) {
                     header("Location: ../index.php?login=success");
                     exit();
                 } else {
-                    header("Location: ../index.php?loginerror=wrongpwd");
+                    header("Location: ../index.php?loginerror=incorrectfields");
                     exit();
                 }
             } else {
-                header("Location: ../index.php?loginerror=nouser");
+                header("Location: ../index.php?loginerror=incorrectfields");
                 exit();
             }
         }

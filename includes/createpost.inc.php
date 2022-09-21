@@ -22,18 +22,34 @@ if (isset($_POST['post-submit']) && isset($_SESSION['userId'])) {
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $my_url = $directory . DIRECTORY_SEPARATOR . $target_file;
     $db_image_url = $directory . "/" . $target_file;
-    $icon_error = $_FILES['imageUpload']['error'];
+    $image_error = $_FILES['imageUpload']['error'];
+    $image_check = ".." . DIRECTORY_SEPARATOR . $directory . DIRECTORY_SEPARATOR . $target_file;
 
 
 
     // VALIDATION
     if (empty($title) || empty($comment)) {
-        header("Location: ../index.php");
+        header("Location: ../index.php?posterror=emptyfields");
 
         // SAVE POST TO DB
     } else {
-        // MOVE IMAGE
-        move_uploaded_file($tmp_name, ".." . DIRECTORY_SEPARATOR . $directory . DIRECTORY_SEPARATOR . $target_file);
+        // ERROR CHECK + MOVE IMAGE
+        // FILE EXISTS
+        if (file_exists($image_check)) {
+            header("Location ../index.php?posterror=imageexists");
+            exit();
+
+            // FILE TYPE CORRECT
+        } else if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+            header("Location: ../index.php?posterror=incorrectfiletype");
+            exit();
+
+            // UPLOAD IMAGE
+        } else {
+            move_uploaded_file($tmp_name, ".." . DIRECTORY_SEPARATOR . $directory . DIRECTORY_SEPARATOR . $target_file);
+        }
+
+
 
         // DECLARE SQL WITH PLACEHOLDERS
         $sql = "INSERT INTO tblposts VALUES (NULL, ?, ?, ?, ?)";

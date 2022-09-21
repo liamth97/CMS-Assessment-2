@@ -35,6 +35,7 @@ if (isset($_POST['signup-submit'])) {
     $my_url = $directory . DIRECTORY_SEPARATOR . $target_file;
     $db_icon_url = $directory . "/" . $target_file;
     $icon_error = $_FILES['iconUpload']['error'];
+    $icon_check = ".." . DIRECTORY_SEPARATOR . $directory . DIRECTORY_SEPARATOR . $target_file;
 
     // if ($temp_file) {
     //     header("Location: ../index.php?=" . ".." . DIRECTORY_SEPARATOR . $directory . DIRECTORY_SEPARATOR . $target_file);
@@ -73,11 +74,11 @@ if (isset($_POST['signup-submit'])) {
 
         // PHP ICON ERRORS
     } else if ($_FILES['iconUpload']['error'] != 0) {
-        header("Location: ../index.php?error=" . $phpFileUploadErrors[$icon_error]);
+        header("Location: ../index.php?error=iconuploaderror");
         exit();
 
         // FILE EXIST    
-    } else if (file_exists($my_url)) {
+    } else if (file_exists($icon_check)) {
         header("Location: ../index.php?error=iconexists");
         exit();
 
