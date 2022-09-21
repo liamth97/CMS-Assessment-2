@@ -15,13 +15,14 @@ require "header.php"
     <div class="row mt-5 mt-md-0 pt-5 pt-md-0">
         <div class="card mt-5 p-0 border-0 bg-light col-12 col-md-9 col-lg-7 m-auto">
             <div class="icon-shift position-absolute">
-                <img class="icon-size rounded-1" src="img/oppo.jpg" alt="">
+                <img class="icon-size rounded-1" src="icons/Cat.jpg" alt="">
             </div>
             <div class="card-header bg-light rounded-top">
                 <p class="h4">Profile Name</p>
             </div>
             <img src="img/venti.jpg" class="card-img-top rounded-0" alt="...">
             <div class="card-body">
+                <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
         </div>

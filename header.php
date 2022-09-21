@@ -31,7 +31,7 @@ session_start();
         <div class="container-fluid">
 
             <!-- NAVBAR ICON START -->
-            <a class="navbar-brand text-light" href="#">Navbar</a>
+            <a class="navbar-brand text-light" href="#">Jumblr |</a>
             <!-- NAVBAR ICON END -->
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,18 +39,40 @@ session_start();
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
+                    <?php
+                    // IF LOGGED IN DISPLAY LOGOUT BUTTON ELSE DISPLAY LOGIN BUTTON
+                    if (isset($_SESSION['userId'])) {
 
-                    <!-- LOGIN START -->
-                    <li class="nav-item mt-2 m-lg-0 ms-lg-5 me-lg-2">
+                        // LOGOUT BUTTON START
+                        echo ('<li class="nav-item mt-2 m-lg-0 ms-lg-5 me-lg-2">
+                        <form action="includes/logout.inc.php" method="POST">
+                        <button class="text-light btn btn-secondary">Logout</button>
+                        </form>
+                        </li>');
+                        // LOGOUT BUTTON END
+
+                        // HELLO USER START
+                        echo ('<div class="alert alert-success m-0 p-1 ps-3 pe-3" role="alert">
+                                Welcome ' . ucfirst($_SESSION['userUid']) .
+                            '!</div>');
+                        // HELLO USER END
+
+                    } else {
+
+                        // LOGIN BUTTON START
+                        echo ('<li class="nav-item mt-2 m-lg-0 ms-lg-5 me-lg-2">
                         <button class="text-light btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-                    </li>
-                    <!-- LOGIN START -->
+                        </li>');
+                        // LOGIN BUTTON END
 
-                    <!-- SIGNUP START -->
-                    <li class="nav-item mt-3 m-lg-0">
+                        // SIGNUP BUTTON START
+                        echo (' <li class="nav-item mt-3 m-lg-0">
                         <button class="text-light btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal">Signup</button>
-                    </li>
-                    <!-- SIGNUP START -->
+                        </li>');
+                        // SIGNUP BUTTON END
+                    }
+
+                    ?>
                 </ul>
             </div>
         </div>

@@ -8,7 +8,7 @@
             <div class="modal-body text-light">
 
                 <!-- FORM START -->
-                <form action="includes/signgup.inc.php" method="POST">
+                <form action="includes/signgup.inc.php" method="POST" enctype="multipart/form-data">
 
                     <!-- USERNAME START -->
                     <div class="mb-3">
@@ -23,6 +23,13 @@
                         <input type="email" class="form-control" id="email" name="mail">
                     </div>
                     <!-- EMAIL END -->
+
+                    <!-- ICON UPLOAD START -->
+                    <div class="mb-3">
+                        <label for="iconUpload" class="form-label">Choose Icon</label>
+                        <input type="file" class="form-control" id="iconUpload" name="iconUpload">
+                    </div>
+                    <!-- ICON UPLOAD END -->
 
                     <!-- PASSWORD START -->
                     <div class="mb-3">
@@ -39,7 +46,7 @@
                     <!-- PASSWORD REPEAT END -->
 
                     <!-- FORM SUBMIT/CLOSE -->
-                    <button type="submit" class="btn btn-primary" name="signup-submit">Submit</button>
+                    <button type="submit" class="btn btn-primary" name="signup-submit" value="Upload">Submit</button>
                     <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal">Close</button>
                 </form>
                 <!-- FORM END -->

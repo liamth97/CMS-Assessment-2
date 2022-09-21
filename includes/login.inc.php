@@ -42,7 +42,7 @@ if (isset($_POST['login-submit'])) {
             if ($row = mysqli_fetch_assoc($result)) {
 
                 // CHECKS ENTERED PWD AGAINST HASHED PWD IN DB
-                $pwdCheck = password_verify($password, $_POST['userPwd']);
+                $pwdCheck = password_verify($password, $row['userPwd']);
 
                 // PWD CHECK
                 if ($pwdCheck == false) {
@@ -59,7 +59,13 @@ if (isset($_POST['login-submit'])) {
                     header("Location: ../index.php?loginerror=wrongpwd");
                     exit();
                 }
+            } else {
+                header("Location: ../index.php?loginerror=nouser");
+                exit();
             }
         }
     }
+} else {
+    header("Location: ../index.php");
+    exit();
 }

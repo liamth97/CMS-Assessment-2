@@ -8,7 +8,7 @@
             <div class="modal-body text-light">
 
                 <!-- FORM START -->
-                <form action="" method="POST">
+                <form action="includes/createpost.inc.php" method="POST" enctype="multipart/form-data">
 
                     <!-- POST TITLE START -->
                     <div class="mb-3">
@@ -19,8 +19,8 @@
 
                     <!-- IMAGE UPLOAD START -->
                     <div class="mb-3">
-                        <label for="imageUpload" class="form-label">Choose File</label>
-                        <input type="file" class="form-control" id="imageUpload" name="img">
+                        <label for="imageUpload" class="form-label">Choose Image</label>
+                        <input type="file" class="form-control" id="imageUpload" name="imageUpload">
                     </div>
                     <!-- IMAGE UPLOAD END -->
 
@@ -33,7 +33,7 @@
 
 
                     <!-- FORM SUBMIT/CLOSE -->
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" value="Upload" name="post-submit">Submit</button>
                     <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal">Close</button>
                 </form>
                 <!-- FORM END -->

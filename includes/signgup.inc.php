@@ -1,5 +1,22 @@
 <?php
 
+// GENERAL VARIABLES FOR FILE UPLOAD
+$directory = "icons";
+$uploadOk = 1;
+$the_message = '';
+$phpFileUploadErrors = array(
+    0 => 'There is no error, the file uploaded with success',
+    1 => 'The uploaded file exceeds the upload_max_filesize directive in php.ini',
+    2 => 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form',
+    3 => 'The uploaded file was only partially uploaded',
+    4 => 'No file was uploaded',
+    6 => 'Missing a temporary folder',
+    7 => 'Failed to write file to disk.',
+    8 => 'A PHP extension stopped the file upload.',
+);
+
+
+
 if (isset($_POST['signup-submit'])) {
     // CONNECT TO DATABASE
     require "connect.inc.php";
@@ -11,9 +28,24 @@ if (isset($_POST['signup-submit'])) {
     $password = $_POST['pwd'];
     $passwordRepeat = $_POST['pwd-repeat'];
 
+    // ICON FILE VARIABLES
+    $tmp_name = $_FILES['iconUpload']['tmp_name'];
+    $target_file = $_FILES['iconUpload']['name'];
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $my_url = $directory . DIRECTORY_SEPARATOR . $target_file;
+    $db_icon_url = $directory . "/" . $target_file;
+    $icon_error = $_FILES['iconUpload']['error'];
+
+    // if ($temp_file) {
+    //     header("Location: ../index.php?=" . ".." . DIRECTORY_SEPARATOR . $directory . DIRECTORY_SEPARATOR . $target_file);
+    //     exit();
+    // }
+
 
     // VALIDATION
 
+
+    // FORM VALIDATION
     // CHECK EMPTY FIELDS
     if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) {
         header("Location: ../index.php?error=emptyfields&uid=" . $username . "&mail=" . $email);
@@ -39,10 +71,28 @@ if (isset($_POST['signup-submit'])) {
         header("Location: ../index.php?error=passwordcheck&uid=" . $username . "&mail=" . $email);
         exit();
 
-        // VALIDATION COMPLETE - RUN SQL + ESCAPE STRINGS
-    } else {
-        // CHECKING IS USER ALREADY EXISTS
+        // PHP ICON ERRORS
+    } else if ($_FILES['iconUpload']['error'] != 0) {
+        header("Location: ../index.php?error=" . $phpFileUploadErrors[$icon_error]);
+        exit();
 
+        // FILE EXIST    
+    } else if (file_exists($my_url)) {
+        header("Location: ../index.php?error=iconexists");
+        exit();
+
+        // INCORRECT FILE TYPE
+    } else if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+        header("Location: ../index.php?error=incorrectfiletype");
+        exit();
+
+        // VALIDATION COMPLETE - MOVE ICON TO ICONS FOLDER + RUN SQL + ESCAPE STRINGS
+    } else {
+
+        // MOVE ICON
+        move_uploaded_file($tmp_name, ".." . DIRECTORY_SEPARATOR . $directory . DIRECTORY_SEPARATOR . $target_file);
+
+        // CHECKING IS USER ALREADY EXISTS
         // DECLARE SQL
         $sql = "SELECT username FROM tblusers WHERE username=?";
 
@@ -75,7 +125,7 @@ if (isset($_POST['signup-submit'])) {
             } else {
 
                 // DECLARE SQL
-                $sql = "INSERT INTO tblusers (username, userEmail, userPwd) VALUES (?, ?, ?)";
+                $sql = "INSERT INTO tblusers (username, userEmail, userIcon, userPwd) VALUES (?, ?, ?, ?)";
 
                 // INIT STATEMENT
                 $statement = mysqli_stmt_init($conn);
@@ -90,7 +140,7 @@ if (isset($_POST['signup-submit'])) {
                     $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
                     // BIND PARAMS
-                    mysqli_stmt_bind_param($statement, "sss", $username, $email, $hashedPwd);
+                    mysqli_stmt_bind_param($statement, "ssss", $username, $email, $db_icon_url, $hashedPwd);
 
                     // EXECUTE STMT
                     mysqli_stmt_execute($statement);
