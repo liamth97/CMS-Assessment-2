@@ -5,12 +5,14 @@ session_start();
 
 $directory = "uploads";
 
-if (isset($_POST['post-submit']) && isset($_SESSION['userId'])) {
+if (isset($_POST['edit-submit']) && isset($_SESSION['userId'])) {
 
     require "connect.inc.php";
 
     // COLLECT AND STORE POST DATA
-    $userId = $_SESSION['userId'];
+
+    $postId = mysqli_real_escape_string($conn, $_GET['id']);
+    $postId = intval($postId);
     $title = $_POST['title'];
     $comment = $_POST['comment'];
 
@@ -27,16 +29,16 @@ if (isset($_POST['post-submit']) && isset($_SESSION['userId'])) {
 
 
     // VALIDATION
-    if (empty($title) || empty($comment)) {
-        header("Location: ../index.php?posterror=emptyfields");
+    if (empty($title) || empty($comment) || empty($tmp_name)) {
+        header("Location: ../index.php?editerror=emptyfields");
 
-        // SAVE POST TO DB
+        // SAVE EDIT TO DB
     } else {
         // ERROR CHECK + MOVE IMAGE
 
         // FILE TYPE CORRECT
         if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-            header("Location: ../index.php?posterror=incorrectfiletype");
+            header("Location: ../index.php?editerror=incorrectfiletype");
             exit();
 
             // UPLOAD IMAGE
@@ -47,7 +49,7 @@ if (isset($_POST['post-submit']) && isset($_SESSION['userId'])) {
 
 
         // DECLARE SQL WITH PLACEHOLDERS
-        $sql = "INSERT INTO tblposts VALUES (NULL, ?, ?, ?, ?)";
+        $sql = "UPDATE tblposts SET postTitle=?, postImg=?, comment=? WHERE postID=?";
 
         // INIT STATEMENT
         $statement = mysqli_stmt_init($conn);
@@ -59,9 +61,9 @@ if (isset($_POST['post-submit']) && isset($_SESSION['userId'])) {
 
             // BIND PARAMS AND EXECUTE + SUCCESS
         } else {
-            mysqli_stmt_bind_param($statement, "isss", $userId, $title, $db_image_url, $comment);
+            mysqli_stmt_bind_param($statement, "sssi", $title, $db_image_url, $comment, $postId);
             mysqli_stmt_execute($statement);
-            header("Location: ../index.php?post=success");
+            header("Location: ../index.php?edit=success");
             exit();
         }
     }

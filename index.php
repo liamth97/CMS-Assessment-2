@@ -145,6 +145,62 @@ require "header.php"
         </div>';
     }
 
+
+
+    // DELETE POST ALERTS
+    if (isset($_GET['delete'])) {
+        if ($_GET['delete'] == "success") {
+            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+          <h4>Your post was successfully deleted!</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+        }
+    }
+
+
+
+    // EDIT POST ALERTS
+    if (isset($_GET['editerror'])) {
+
+        // EDIT POST ERRORS
+        // EMPTY FIELDS
+        if ($_GET['editerror'] == "emptyfields") {
+            $editErrorMsg = 'One or more login fields were <strong>empty</strong>, please try again.';
+
+            // INCORRECT FILE TYPE
+        } else if ($_GET['editerror'] == "incorrectfiletype") {
+            $editErrorMsg = 'Image file type must be .jpg, .png, .jpeg, or .gif, please try again.';
+        }
+
+        // ERROR MESSAGE
+        echo ('<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h4>' . $editErrorMsg . '</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>');
+
+        // POST SUCCESS
+    } else if (isset($_GET['edit']) == "success") {
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+          <h4>Your post edit was successful!</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+    }
+
+
+
+    // INTERNAL ERROR
+    if (isset($_GET['error'])) {
+        if ($_GET['error'] == "internalerror") {
+            $internalErrorMsg = 'There has been an internal error, please try again later.';
+        }
+
+        // ERROR MESSAGE
+        echo ('<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h4>' . $internalErrorMsg . '</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>');
+    }
+
     ?>
 
 
@@ -173,22 +229,39 @@ require "header.php"
 
         while ($row = mysqli_fetch_array($result)) {
 
+            // POST OUTPUT
             $output .= '
-            <div class="row mt-5 mt-md-0 pt-5 pt-md-0">
-                <div class="card mt-5 p-0 border-0 bg-light col-12 col-md-9 col-lg-7 m-auto" id="' . $row['postID'] . '">
-                    <div class="icon-shift position-absolute">
-                        <img class="icon-size rounded-1" src="' . $row['userIcon'] . '" alt="">
+                <div class="row mt-5 mt-md-0 pt-5 pt-md-0">
+                    <div class="card mt-5 p-0 border-0 bg-light col-12 col-md-9 col-lg-7 m-auto" id="' . $row['postID'] . '">
+                        <div class="icon-shift position-absolute">
+                            <img class="icon-size rounded-1" src="' . $row['userIcon'] . '" alt="">
+                        </div>
+                    <div class="card-header bg-light rounded-top">
+                        <p class="h4">' . ucfirst($row['username']) . '</p>
                     </div>
-                <div class="card-header bg-light rounded-top">
-                    <p class="h4">' . ucfirst($row['username']) . '</p>
+                    <img src="' . $row['postImg'] . '" class="card-img-top rounded-0" alt="' . $row['postTitle'] . '">
+                    <div class="card-body">
+                        <h5 class="card-title">' . $row['postTitle'] . '</h5>
+                        <p class="card-text">' . $row['comment'] . '</p>';
+
+            if (isset($_SESSION['userId'])) {
+                if ($row['userID'] == $_SESSION['userId']) {
+                    $output .=
+                        '<div class="admin-btn">
+                        <button class="btn btn-secondary mt-2" data-bs-toggle="modal" data-bs-target="#editPostModal' . $row['postID'] . '">Edit</button>
+                        <a href="includes/deletepost.inc.php?id=' . $row['postID'] . '" class="btn btn-danger mt-2">Delete</a>
+                        </div>';
+                } else {
+                    echo null;
+                }
+            }
+            $output .=
+                '</div>
                 </div>
-                <img src="' . $row['postImg'] . '" class="card-img-top rounded-0" alt="' . $row['postTitle'] . '">
-                <div class="card-body">
-                    <h5 class="card-title">' . $row['postTitle'] . '</h5>
-                    <p class="card-text">' . $row['comment'] . '</p>
-                </div>
-            </div>
-        </div>';
+            </div>';
+
+            // EDIT POST MODAL FOR EACH OF THE POSTS
+            require "./editpost.php";
         }
         echo $output;
     } else {

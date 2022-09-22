@@ -12,6 +12,8 @@
 
 
 
+
+
  <?php
 
     // IF LOGGED IN DISPLAY NEW POST BUTTON

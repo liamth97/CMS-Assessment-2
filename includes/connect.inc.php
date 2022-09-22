@@ -16,10 +16,10 @@ if ($conn->connect_error) {
         . $conn->connect_error .
         '</div>');
 } else {
-    echo null;
+    // echo null;
 
-    // ('<div class="alert alert-success mt-4 alert-dismissible fade show" role="alert">
-    // <h4>Connected</h4>
-    // <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    // </div>');
+    ('<div class="alert alert-success mt-4 alert-dismissible fade show" role="alert">
+    <h4>Connected</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>');
 }
