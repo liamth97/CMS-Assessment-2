@@ -14,9 +14,7 @@ if (isset($_POST['post-submit']) && isset($_SESSION['userId'])) {
     $title = $_POST['title'];
     $comment = $_POST['comment'];
 
-    // COLLECT AND STORE FILES DATA
     // ICON FILE VARIABLES
-
     $tmp_name = $_FILES['imageUpload']['tmp_name'];
     $target_file = $_FILES['imageUpload']['name'];
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));

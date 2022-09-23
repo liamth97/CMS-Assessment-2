@@ -19,12 +19,14 @@ require "header.php"
     <?php
     // QUERY DATABASE for ALL POSTS
 
+    // REQUIRE CONNECTION
     require './includes/connect.inc.php';
 
+    // SQL QUERY STORED IN VARIABLE
     $sql = "SELECT tblposts.postID, tblposts.userID, tblposts.postTitle, tblposts.postImg, tblposts.comment,
             tblusers.userID, tblusers.username, tblusers.userIcon FROM tblposts, tblusers WHERE tblusers.userID = tblposts.userID";
 
-
+    // STORE QUERY INTO RESULT
     $result = mysqli_query($conn, $sql);
 
     ?>
@@ -32,12 +34,15 @@ require "header.php"
     <?php
     // CHECK FOR POSTS RETURNED RESULT & DISPLAY ON SUCCESS
 
+    // ONLY RUN IF THERE ARE ROWS RETURNED AND USER IS LOGGED IT
     if (mysqli_num_rows($result) > 0 && isset($_SESSION['userId'])) {
 
         // LOOP DATA INTO OUR BOOTSTRAP CARD TEMPLATE
 
+        // BLANK OUTPUT TO FILL
         $output = "";
 
+        // LOOP RESULTS WHILE THERE ARE RESULTS
         while ($row = mysqli_fetch_array($result)) {
 
             // POST OUTPUT
@@ -74,10 +79,14 @@ require "header.php"
             // EDIT POST MODAL FOR EACH OF THE POSTS
             require "./editpost.php";
         }
+        // ECHO OUT THE OUTPUT
         echo $output;
+
+        // ELSE OUTPUT NOTHING
     } else {
         echo null;
     }
+    // CLOSE CONNECTION
     mysqli_close($conn);
     ?>
 </div>

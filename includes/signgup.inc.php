@@ -37,14 +37,8 @@ if (isset($_POST['signup-submit'])) {
     $icon_error = $_FILES['iconUpload']['error'];
     $icon_check = ".." . DIRECTORY_SEPARATOR . $directory . DIRECTORY_SEPARATOR . $target_file;
 
-    // if ($temp_file) {
-    //     header("Location: ../index.php?=" . ".." . DIRECTORY_SEPARATOR . $directory . DIRECTORY_SEPARATOR . $target_file);
-    //     exit();
-    // }
-
 
     // VALIDATION
-
 
     // FORM VALIDATION
     // CHECK EMPTY FIELDS

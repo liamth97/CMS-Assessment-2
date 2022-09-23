@@ -16,7 +16,6 @@ if ($conn->connect_error) {
         . $conn->connect_error .
         '</div>');
 } else {
-    // echo null;
 
     ('<div class="alert alert-success mt-4 alert-dismissible fade show" role="alert">
     <h4>Connected</h4>

@@ -45,9 +45,12 @@ if (isset($_POST['login-submit'])) {
                 $pwdCheck = password_verify($password, $row['userPwd']);
 
                 // PWD CHECK
+                // IF FALSE RETURN TO INDEX WITH ERROR
                 if ($pwdCheck == false) {
                     header("Location: ../index.php?loginerror=incorrectfields");
                     exit();
+
+                    // LOGIN SUCCESS
                 } else if ($pwdCheck == true) {
                     session_start();
 
