@@ -52,9 +52,9 @@ session_start();
                         // LOGOUT BUTTON END
 
                         // HELLO USER START
-                        echo ('<div class="alert alert-success m-0 p-1 ps-3 pe-3" role="alert">
+                        echo ('<li><div class="alert alert-success m-0 p-1 ps-3 pe-3" role="alert">
                                 Welcome ' . ucfirst($_SESSION['userUid']) .
-                            '!</div>');
+                            '!</div></li>');
                         // HELLO USER END
 
                     } else {

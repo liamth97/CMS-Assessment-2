@@ -12,8 +12,8 @@
 
                     <!-- USERNAME START -->
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="uid" aria-describedby="username">
+                        <label for="usernameSignup" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="usernameSignup" name="uid" aria-describedby="usernameSignup">
                     </div>
                     <!-- USERNAME END -->
 
@@ -33,8 +33,8 @@
 
                     <!-- PASSWORD START -->
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="pwd">
+                        <label for="passwordSignup" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="passwordSignup" name="pwd">
                     </div>
                     <!-- PASSWORD END -->
 

@@ -12,15 +12,15 @@
 
                     <!-- USERNAME START -->
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username/Email</label>
-                        <input type="text" class="form-control" id="username" name="uid" aria-describedby="username">
+                        <label for="usernameLogin" class="form-label">Username/Email</label>
+                        <input type="text" class="form-control" id="usernameLogin" name="uid" aria-describedby="usernameLogin">
                     </div>
                     <!-- USERNAME END -->
 
                     <!-- PASSWORD START -->
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="pwd" id="password">
+                        <label for="passwordLogin" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="pwd" id="passwordLogin">
                     </div>
                     <!-- PASSWORD END -->
 

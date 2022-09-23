@@ -36,44 +36,44 @@ if (isset($_GET['loginerror'])) {
 
 
 // SIGNUP ALERTS
-if (isset($_GET['error'])) {
+if (isset($_GET['signuperror'])) {
 
     // SIGNUP ERRORS
 
     // EMPTY FIELDS
-    if ($_GET['error'] == "emptyfields") {
+    if ($_GET['signuperror'] == "emptyfields") {
         $signupErrorMessage = 'One or more login fields were <strong>empty</strong>, please try again.';
 
         // INVALID USERNAME OR EMAIL
-    } else if ($_GET['error'] == "invalidmailuid") {
+    } else if ($_GET['signuperror'] == "invalidmailuid") {
         $signupErrorMessage = 'Username or email may have been <strong>invalid</strong>, please try again.';
 
         // INVALID EMAIL
-    } else if ($_GET['error'] == "invalidmail") {
+    } else if ($_GET['signuperror'] == "invalidmail") {
         $signupErrorMessage = 'Email is <strong>invalid</strong>, please try again.';
 
         // INVALID USERNAME
-    } else if ($_GET['error'] == "invaliduid") {
+    } else if ($_GET['signuperror'] == "invaliduid") {
         $signupErrorMessage = 'Username is <strong>invalid</strong>, please try again.';
 
         // PASSWORDS DON'T MATCH
-    } else if ($_GET['error'] == "passwordcheck") {
+    } else if ($_GET['signuperror'] == "passwordcheck") {
         $signupErrorMessage = 'Please check both passwords <strong>match</strong> and try again.';
 
         // ICON UPLOAD ERROR
-    } else if ($_GET['error'] == "iconuploaderror") {
+    } else if ($_GET['signuperror'] == "iconuploaderror") {
         $signupErrorMessage = 'Failed to upload icon, please check file size is less than 2MB or try a different file.';
 
         // ICON FILE ALREADY EXISTS
-    } else if ($_GET['error'] == "iconexists") {
+    } else if ($_GET['signuperror'] == "iconexists") {
         $signupErrorMessage = 'This icon already exists, please a different icon.';
 
         // INCORRECT ICON FILE TYPE
-    } else if ($_GET['error'] == "incorrectfiletype") {
+    } else if ($_GET['signuperror'] == "incorrectfiletype") {
         $signupErrorMessage = 'Icon file type must be .jpg, .png, .jpeg, or .gif, please try again.';
 
         // USER ALREADY EXISTS
-    } else if ($_GET['error'] == "userexists") {
+    } else if ($_GET['signuperror'] == "userexists") {
         $signupErrorMessage = 'Username already exists, please try a different username.';
     }
 

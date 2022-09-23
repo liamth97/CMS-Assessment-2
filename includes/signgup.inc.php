@@ -43,42 +43,42 @@ if (isset($_POST['signup-submit'])) {
     // FORM VALIDATION
     // CHECK EMPTY FIELDS
     if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) {
-        header("Location: ../index.php?error=emptyfields&uid=" . $username . "&mail=" . $email);
+        header("Location: ../index.php?signuperror=emptyfields&uid=" . $username . "&mail=" . $email);
         exit();
 
         // CHECK EMAIL/PWD FOR CORRECT SYNTAX
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-        header("Location: ../index.php?error=invalidmailuid");
+        header("Location: ../index.php?signuperror=invalidmailuid");
         exit();
 
         // CHECK EMAIL
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: ../index.php?error=invalidmail");
+        header("Location: ../index.php?signuperror=invalidmail");
         exit();
 
         // CHECK USERNAME
     } else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-        header("Location: ../index.php?error=invaliduid");
+        header("Location: ../index.php?signuperror=invaliduid");
         exit();
 
         // CHECK PASSWORDS MATCH
     } else if ($password !== $passwordRepeat) {
-        header("Location: ../index.php?error=passwordcheck&uid=" . $username . "&mail=" . $email);
+        header("Location: ../index.php?signuperror=passwordcheck&uid=" . $username . "&mail=" . $email);
         exit();
 
         // PHP ICON ERRORS
     } else if ($_FILES['iconUpload']['error'] != 0) {
-        header("Location: ../index.php?error=iconuploaderror");
+        header("Location: ../index.php?signuperror=iconuploaderror");
         exit();
 
         // FILE EXIST    
     } else if (file_exists($icon_check)) {
-        header("Location: ../index.php?error=iconexists");
+        header("Location: ../index.php?signuperror=iconexists");
         exit();
 
         // INCORRECT FILE TYPE
     } else if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-        header("Location: ../index.php?error=incorrectfiletype");
+        header("Location: ../index.php?signuperror=incorrectfiletype");
         exit();
 
         // VALIDATION COMPLETE - MOVE ICON TO ICONS FOLDER + RUN SQL + ESCAPE STRINGS
@@ -113,7 +113,7 @@ if (isset($_POST['signup-submit'])) {
 
             // IF USER EXISTS, PASS BACK ERROR
             if ($resultCheck > 0) {
-                header("Location: ../index.php?error=userexists&mail=" . $email);
+                header("Location: ../index.php?signuperror=userexists&mail=" . $email);
                 exit();
 
                 // ELSE CREATE NEW USER

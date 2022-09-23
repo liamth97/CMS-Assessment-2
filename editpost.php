@@ -16,22 +16,22 @@ $output .= '
 
                                     <!-- POST TITLE START -->
                                     <div class="mb-3">
-                                        <label for="postTitle" class="form-label">Title</label>
-                                        <input type="text" class="form-control" id="postTitle" name="title" value="' . $row['postTitle'] . '" aria-describedby="postTitle">
+                                        <label for="postTitle' . $row['postID'] . '" class="form-label">Title</label>
+                                        <input type="text" class="form-control" id="postTitle' . $row['postID'] . '" name="title" value="' . $row['postTitle'] . '" aria-describedby="postTitle">
                                     </div>
                                     <!-- POST TITLE END -->
 
                                     <!-- IMAGE UPLOAD START -->
                                     <div class="mb-3">
-                                        <label for="imageUpload" class="form-label">Choose Image</label>
-                                        <input type="file" class="form-control" id="imageUpload" name="imageUpload">
+                                        <label for="imageUpload' . $row['postID'] . '" class="form-label">Choose Image</label>
+                                        <input type="file" class="form-control" id="imageUpload' . $row['postID'] . '" name="imageUpload">
                                     </div>
                                     <!-- IMAGE UPLOAD END -->
 
                                     <!-- COMMENT START -->
                                     <div class="mb-3">
-                                        <label for="comment" class="form-label">Comment</label>
-                                        <textarea class="form-control" id="comment" name="comment" rows="3">' . $row['comment'] . '</textarea>
+                                        <label for="comment' . $row['postID'] . '" class="form-label">Comment</label>
+                                        <textarea class="form-control" id="comment' . $row['postID'] . '" name="comment" rows="3">' . $row['comment'] . '</textarea>
                                     </div>
                                     <!-- COMMENT END -->
 
